@@ -1,0 +1,171 @@
+body{
+	margin: 0px;
+	font-family: roboto;
+	    font-size: 18px;
+        background-color: #343434;
+        color: white;
+            margin: 10%;
+} 
+
+/*hide scrollbar*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/*home page*/
+#show-goal{
+    height: 80vh;
+          position: relative;
+          overflow: scroll;
+}
+
+
+#add,#back {
+    background-color: #3DA0EB;
+    color: white;
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    border: 1px solid #3DA0EB;
+    display: flex;
+    align-items: center;
+  justify-content: center;
+  text-decoration: none;
+    bottom: 5%;
+     position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+/*#add:hover{
+	background-color: transparent;
+	color: #3DA0EB;
+}*/
+
+#add:before {
+    content: url(images/Plus_font_awesome.svg);
+    width: 30px;
+    padding-top: 3px;
+}
+
+
+#back:before {
+    content: url(images/Angle_left_font_awesome.svg);
+        width: 40px;
+    padding-top: 3px;
+}
+#log {
+    width: 100%;
+    text-align: left;
+}
+
+#log a {
+    display: flex;
+    justify-content: space-between;
+}
+
+#preview-goal{
+	    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#add-goal{
+	    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+#add-goal input {
+    margin-bottom: 40px;
+    border: 2px solid #3DA0EB;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    background-color: transparent;
+}
+
+input#save {
+    width: fit-content;
+        padding: 10px 20px;
+    align-self: center;
+}
+
+label {
+    margin-bottom: 20px;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color:  white;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+::placeholder {
+  color: white;
+}
+
+/*progress bar*/
+.bar {
+    background-color: #DCDCDC;
+    width: 100%;
+    height: 2em;
+        border-radius: 20px;
+        overflow: hidden;
+}
+
+.progress {
+    background-color: #3DA0EB;
+    height: 100%;
+    width: 10%;
+}
+
+#save{
+	background-color: #3DA0EB;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: 1px solid #3DA0EB;
+}
+
+#save:hover{
+	background-color: transparent;
+	color: #3DA0EB;
+}
+
+
+/*single page*/
+
+#addsub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+#addsub p {
+    padding: 0px 20px;
+}
+
+#addpoint, #subpoint {
+    background-color: #3DA0EB;
+    color: white;
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    border: 1px solid #3DA0EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
