@@ -64,7 +64,7 @@ a {
     text-align: left;
 }
 
-#log a {
+#log section {
     display: flex;
     justify-content: space-between;
 }
