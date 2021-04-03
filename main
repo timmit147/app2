@@ -1,0 +1,47 @@
+package com.example.todo;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+public class MainActivity extends AppCompatActivity {
+    private WebView webView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        webView = (WebView) findViewById(R.id.webview);
+        // Use dom
+        webView.getSettings().setDomStorageEnabled(true);
+        // Use javascript
+        webView.getSettings().setJavaScriptEnabled(true);
+        // Enable web cache
+        webView.getSettings().setAppCacheEnabled( true );
+
+        // Create new webview
+        webView.setWebViewClient(new WebViewClient());
+
+//        //load local website
+//        webView.loadUrl("file:///android_asset/index.html");
+
+        File file = new File("data/data/com.example.todo/a.txt");
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        webView.loadUrl("file:///android_asset/a.html");
+    }
+}
+
