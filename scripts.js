@@ -11,11 +11,16 @@ function include(file) {
 
 include('modules/script.js');
 
+include('modules/colorbackground.js');
+
+include('modules/colortext.js');
+
+
+// include('modules/hideSettingsIcon.js');
+
+
 
 // include('modules/change.js');
-
-
-// include('modules/changebackground.js');
 
 
 

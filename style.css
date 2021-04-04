@@ -169,3 +169,27 @@ label {
     justify-content: center;
     text-decoration: none;
 }
+
+/*Settings page*/
+#settingsIcon{
+    position: fixed;
+    right: 75%;
+    bottom: 6.3%;
+    height: 2em;
+    width: 2em;
+    opacity: 0;
+}
+
+#settingsIcon:before {
+    content: url(images/cog.svg);
+    width: 30px;
+    height: 30px;
+    padding-top: 3px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(100%) contrast(103%);
+}
+
+#settings {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
