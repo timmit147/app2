@@ -1,12 +1,15 @@
 // changes background in all files
 var getValue = localStorage.getItem("colorBackground");
-document.body.style.backgroundColor = getValue;
+document.documentElement.style.setProperty('--secundary', getValue);
 
-// add form to settings
-if(document.querySelector('#settings')){
-const result = document.querySelector('#settings') ;
- result.innerHTML = result.innerHTML + '<section id ="colorBackground"><form id="formColorBackground"> Background color: <input type="text" name="fname" value="color"><br><input type="submit" value="submit"></form> </section>';
+// toevoegen in html #settings
+if(document.getElementById("settings")){
+var e = document.createElement('section');
+e.setAttribute("id", "colorBackground");
+e.innerHTML = ('<form id="formColorBackground"> Background color: <input type="color" name="fname" value="color"><input type="submit" value="submit"></form>');
+document.getElementById("settings").appendChild(e);
 }
+
 
 if(document.getElementById("colorBackground")){
 

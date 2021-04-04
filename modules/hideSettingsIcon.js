@@ -1,9 +1,9 @@
-if(document.querySelector('#settings')){
-const result = document.querySelector('#settings') ;
-result.innerHTML = result.innerHTML + "<section><input type='checkbox' id='hideSettingsIcon'> <label>Hide settings icon</label></section>";
+// toevoegen in html #settings
+if(document.getElementById("settings")){
+var e = document.createElement('section');
+e.innerHTML = ('<input type="checkbox" id="hideSettingsIcon"> <label>Hide settings icon</label>');
+document.getElementById("settings").appendChild(e);
 }
-
-
 
 var getValue;
 

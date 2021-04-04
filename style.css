@@ -1,10 +1,16 @@
+:root {
+  --primary: black;
+  --secundary: white;
+}
+
+
 body{
 	margin: 0px;
 	font-family: roboto;
-	    font-size: 18px;
-        background-color: #343434;
-        color: white;
-            margin: 10%;
+	font-size: 18px;
+    background-color: var(--secundary);
+    margin: 10%;
+    color: var(--primary);
 } 
 
 /*hide scrollbar*/
@@ -14,7 +20,7 @@ body{
 
 a {
     text-decoration: none;
-    color: white;
+    color: var(--secundary);
 }
 
 /*home page*/
@@ -26,12 +32,11 @@ a {
 
 
 #add,#back {
-    background-color: #3DA0EB;
-    color: white;
+    background-color: var(--primary);
+    color: var(--secundary);
     border-radius: 50%;
     height: 3em;
     width: 3em;
-    border: 1px solid #3DA0EB;
     display: flex;
     align-items: center;
   justify-content: center;
@@ -41,11 +46,6 @@ a {
     left: 50%;
     transform: translate(-50%, 0);
 }
-
-/*#add:hover{
-	background-color: transparent;
-	color: #3DA0EB;
-}*/
 
 #add:before {
     content: url(images/Plus_font_awesome.svg);
@@ -58,15 +58,19 @@ a {
     content: url(images/Angle_left_font_awesome.svg);
         width: 40px;
     padding-top: 3px;
+    fill:green;
 }
 #log {
     width: 100%;
     text-align: left;
+        display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #log section {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 #preview-goal{
@@ -86,11 +90,24 @@ a {
 
 #add-goal input {
     margin-bottom: 40px;
-    border: 2px solid #3DA0EB;
+    border: 2px solid var(--primary);
     border-radius: 10px;
     padding: 10px;
-    color: white;
+    color: var(--primary);
     background-color: transparent;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--primary);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--primary);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--primary);
 }
 
 input#save {
@@ -102,47 +119,6 @@ input#save {
 label {
     margin-bottom: 20px;
 }
-
-::-webkit-input-placeholder { /* Edge */
-  color:  white;
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
-}
-
-::placeholder {
-  color: white;
-}
-
-/*progress bar*/
-.bar {
-    background-color: #DCDCDC;
-    width: 100%;
-    height: 2em;
-        border-radius: 20px;
-        overflow: hidden;
-}
-
-.progress {
-    background-color: #3DA0EB;
-    height: 100%;
-    width: 10%;
-}
-
-#save{
-	background-color: #3DA0EB;
-    color: white;
-    border-radius: 10px;
-    padding: 10px 15px;
-    border: 1px solid #3DA0EB;
-}
-
-#save:hover{
-	background-color: transparent;
-	color: #3DA0EB;
-}
-
 
 /*single page*/
 
@@ -158,12 +134,12 @@ label {
 }
 
 #addpoint, #subpoint {
-    background-color: #3DA0EB;
-    color: white;
+    background-color: var(--primary);
+    color: var(--secundary);
     border-radius: 50%;
     height: 3em;
     width: 3em;
-    border: 1px solid #3DA0EB;
+    border: 1px solid var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -185,11 +161,29 @@ label {
     width: 30px;
     height: 30px;
     padding-top: 3px;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(100%) contrast(103%);
 }
 
 #settings {
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+
+#show-goal button {
+    display: none;
+}
+
+#show-goal .red button {
+    display: block;
+}
+
+
+#settings form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="submit"], button {
+    width: fit-content;
 }
