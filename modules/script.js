@@ -16,6 +16,7 @@ function addLocalStorage(){
 
 // activate on save page
 if(document.getElementById("save")){
+
 	getList();
 	console.log(list);
 	if(list == null){
@@ -35,7 +36,7 @@ if(document.getElementById("home")){
 	console.log(list);
 	i = 0;
 	for (item in list) {
-	  document.getElementById('log').innerHTML += "<section id= '" + item + "'> <p>" + item + "</p> <button onclick='remove("+ item +")'>Remove</button><button onclick='change("+ item +")' >change</button> </section>"
+	  document.getElementById('log').innerHTML += "<section id= '" + item + "'> <p>" + item + "</p> </section>"
 	  i++;
 	}
 }
@@ -46,25 +47,59 @@ const cbox = document.querySelectorAll("#log section");
 
 for (let i = 0; i < cbox.length; i++) {
 	cbox[i].addEventListener("click", function() {
+
+	if(cbox[i].classList.contains("red")){
+		cbox[i].classList.remove("red");
+		document.querySelector("#slider-icon").style.display = "unset";
+		document.querySelector("#plus-icon").style.display = "unset";
+		document.querySelector("#trash-icon").style.display = "none";
+		document.querySelector("#pen-icon").style.display = "none";
+		cbox[i].style.textDecoration  = "none";
+	}
+
+	else{
+
+
+		for (let i = 0; i < cbox.length; i++) {
+			if (cbox[i].classList.contains("red")){
+				cbox[i].classList.remove("red");
+				document.querySelector("#slider-icon").style.display = "unset";
+				document.querySelector("#plus-icon").style.display = "unset";
+				document.querySelector("#trash-icon").style.display = "none";
+				document.querySelector("#pen-icon").style.display = "none";
+				cbox[i].style.textDecoration  = "none";
+			}
+			
+		}
+
 		cbox[i].classList.toggle("red");
-		if(cbox[i].classList.contains("red")){
-			// cbox[i].style.background = "red";
-		}
-		else{
-			cbox[i].style.background = "none";
-		}
+
+		cbox[i].style.textDecoration  = "underline";
+		document.querySelector("#slider-icon").style.display = "none";
+		document.querySelector("#plus-icon").style.display = "none";
+		document.querySelector("#trash-icon").style.display = "unset";
+		document.querySelector("#pen-icon").style.display = "unset";
+
+		document.getElementById("trash-icon").onclick = function() { remove(cbox[i].id) };
+
+		document.getElementById("pen-icon").onclick = function() { change(cbox[i].id) };
+
+	}
+
+
 	});
 }
 
+
 function remove(x){
 	getList();
-	delete list[x.id];
+	delete list[x];
 	addLocalStorage();
 	location.reload();
 }
 
-function change(){
-window.location.href = "single.html?item=" + item;
+function change(x){
+window.location.href = "single.html?item=" + x;
 }
 
 if(document.getElementById("submitChange")){
@@ -75,3 +110,4 @@ list[item] = document.querySelector("#change").value;
 addLocalStorage();
 });
 }
+

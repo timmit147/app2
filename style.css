@@ -1,3 +1,5 @@
+/*General */
+
 :root {
   --primary: black;
   --secundary: white;
@@ -11,6 +13,7 @@ body{
     background-color: var(--secundary);
     margin: 10%;
     color: var(--primary);
+
 } 
 
 /*hide scrollbar*/
@@ -18,9 +21,80 @@ body{
   display: none;
 }
 
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder { 
+  color: var(--primary);
+  /* Firefox */
+  opacity: 1; 
+}
+
+/* Internet Explorer 10-11 */
+:-ms-input-placeholder { 
+  color: var(--primary);
+}
+
+/* Microsoft Edge */
+::-ms-input-placeholder { 
+  color: var(--primary);
+}
+
+/*active*/
+.input:focus {
+    outline: none !important;
+    border:1px solid blue;
+    box-shadow: 0 0 10px blue;
+}
+
 a {
     text-decoration: none;
     color: var(--secundary);
+}
+
+input[type="submit"], button {
+    width: fit-content;
+    background-color:  var(--primary);
+    color:  var(--secundary);
+    border: none;
+    padding: 5px 15px;
+    font-weight: 900;
+}
+
+
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    padding: 0px;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+}
+
+/*navigation*/
+nav {
+    border-top: 2px solid var(--primary);
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+svg {
+    fill: var(--primary);
+    width: 30px;
+    height: 30px;
+    align-self: center;
+}
+
+#trash-icon,#pen-icon{
+    display: none;
 }
 
 /*home page*/
@@ -97,19 +171,6 @@ a {
     background-color: transparent;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--primary);
-  opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: var(--primary);
-}
-
-::-ms-input-placeholder { /* Microsoft Edge */
-  color: var(--primary);
-}
-
 input#save {
     width: fit-content;
         padding: 10px 20px;
@@ -184,6 +245,3 @@ label {
     gap: 10px;
 }
 
-input[type="submit"], button {
-    width: fit-content;
-}

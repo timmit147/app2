@@ -2,7 +2,6 @@
 var getValue = localStorage.getItem("colorText");
 document.documentElement.style.setProperty('--primary', getValue);
 
-
 // toevoegen in html #settings
 if(document.getElementById("settings")){
 var e = document.createElement('section');

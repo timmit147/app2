@@ -15,9 +15,7 @@ include('modules/colorbackground.js');
 
 include('modules/colortext.js');
 
-include('modules/hideSettingsIcon.js');
-
-
+// include('modules/hideSettingsIcon.js');
 
 // include('modules/change.js');
 
