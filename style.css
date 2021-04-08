@@ -1,8 +1,7 @@
 /*General */
-
 :root {
-  --primary: black;
-  --secundary: white;
+  --primary: white;
+  --secundary: black;
 }
 
 
@@ -93,7 +92,7 @@ svg {
     align-self: center;
 }
 
-#trash-icon,#pen-icon{
+#trash-icon,#pen-icon,#folder-icon{
     display: none;
 }
 
@@ -104,36 +103,6 @@ svg {
           overflow: scroll;
 }
 
-
-#add,#back {
-    background-color: var(--primary);
-    color: var(--secundary);
-    border-radius: 50%;
-    height: 3em;
-    width: 3em;
-    display: flex;
-    align-items: center;
-  justify-content: center;
-  text-decoration: none;
-    bottom: 5%;
-     position: fixed;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-#add:before {
-    content: url(images/Plus_font_awesome.svg);
-    width: 30px;
-    padding-top: 3px;
-}
-
-
-#back:before {
-    content: url(images/Angle_left_font_awesome.svg);
-        width: 40px;
-    padding-top: 3px;
-    fill:green;
-}
 #log {
     width: 100%;
     text-align: left;

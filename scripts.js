@@ -1,26 +1,15 @@
-function include(file) {
-  
-  var script  = document.createElement('script');
-  script.src  = file;
-  script.type = 'text/javascript';
-  script.defer = true;
-  
-  document.getElementsByTagName('head').item(0).appendChild(script);
-  
-}
+var files = ['backgroundImage', 'colorbackground', 'colortext', 'script', 'inception']; 
 
-include('modules/script.js');
+function loadScripts(){
+   const directory = 'modules/';
+   const extension = '.js'; 
+   for (const file of files){ 
+       const path = directory + file + extension; 
+       const script = document.createElement("script");
+       script.src = path;
+       // console.log(script);
+       document.head.appendChild(script);
+   } 
+ }
 
-include('modules/colorbackground.js');
-
-include('modules/colortext.js');
-
-// include('modules/hideSettingsIcon.js');
-
-// include('modules/change.js');
-
-
-
-// include('modules/clear.js');
-
-// include('modules/time.js');
+ loadScripts();
