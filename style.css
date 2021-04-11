@@ -92,7 +92,7 @@ svg {
     align-self: center;
 }
 
-#trash-icon,#pen-icon,#folder-icon{
+#trash-icon,#pen-icon,#folder-icon,#home-back-icon{
     display: none;
 }
 

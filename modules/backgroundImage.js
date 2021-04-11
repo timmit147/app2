@@ -11,7 +11,7 @@ document.body.style.overflow = "hidden";
 if(document.getElementById("settings")){
 var e = document.createElement('section');
 e.setAttribute("id", "backgroundImage");
-e.innerHTML = ('<input type="file" id="files" name="files[]" multiple /><output id="list"></output>');
+e.innerHTML = ('<input type="file" id="files" name="files[]" multiple />');
 document.getElementById("settings").appendChild(e);
 }
 
@@ -33,11 +33,6 @@ function handleFileSelect(evt) {
       reader.onload = (function(theFile) {
         return function(e) {
           // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-            
-          document.getElementById('list').insertBefore(span, null);
           localStorage.setItem('img', e.target.result);
           location.reload();
         };
