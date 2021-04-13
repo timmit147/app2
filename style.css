@@ -5,15 +5,18 @@
 }
 
 
-body{
-	margin: 0px;
-	font-family: roboto;
-	font-size: 18px;
+body {
+    height: 85vh;
+    font-family: roboto;
+    font-size: 18px;
     background-color: var(--secundary);
-    margin: 10%;
+    padding: 2em;
+    margin: 0px;
     color: var(--primary);
-
-} 
+    overflow: scroll;
+    display: flex;
+    box-sizing: border-box;
+}
 
 /*hide scrollbar*/
 ::-webkit-scrollbar {
@@ -75,7 +78,7 @@ input[type="color"]::-webkit-color-swatch {
 nav {
     border-top: 2px solid var(--primary);
     width: 100%;
-    height: 100px;
+    height: 15vh;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -92,13 +95,12 @@ svg {
     align-self: center;
 }
 
-#trash-icon,#pen-icon,#folder-icon,#home-back-icon{
+#pen-icon,#folder-icon,#home-back-icon{
     display: none;
 }
 
 /*home page*/
 #show-goal{
-    height: 80vh;
           position: relative;
           overflow: scroll;
 }
@@ -109,6 +111,12 @@ svg {
         display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+#log input {
+    background-color: unset;
+    border: none;
+    color:  var(--primary);
 }
 
 #log section {
@@ -213,4 +221,6 @@ label {
     flex-direction: column;
     gap: 10px;
 }
+
+
 
