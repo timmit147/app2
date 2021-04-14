@@ -6,7 +6,7 @@
 
 
 body {
-    height: 85vh;
+    height: 100vh;
     font-family: roboto;
     font-size: 18px;
     background-color: var(--secundary);
@@ -16,6 +16,8 @@ body {
     overflow: scroll;
     display: flex;
     box-sizing: border-box;
+        background-position: center;
+            background-size: cover;
 }
 
 /*hide scrollbar*/
@@ -49,14 +51,14 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--secundary);
+    color: var(--primary);
 }
 
-input[type="submit"], button {
+.button {
     width: fit-content;
-    background-color:  var(--primary);
-    color:  var(--secundary);
-    border: none;
+    background-color:  unset;
+    color:  var(--primary);
+    border: 1px solid var(--primary);
     padding: 5px 15px;
     font-weight: 900;
 }
@@ -74,36 +76,7 @@ input[type="color"]::-webkit-color-swatch {
     border: none;
 }
 
-/*navigation*/
-nav {
-    border-top: 2px solid var(--primary);
-    width: 100%;
-    height: 15vh;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-
-svg {
-    fill: var(--primary);
-    width: 30px;
-    height: 30px;
-    align-self: center;
-}
-
-#pen-icon,#folder-icon,#home-back-icon{
-    display: none;
-}
-
 /*home page*/
-#show-goal{
-          position: relative;
-          overflow: scroll;
-}
 
 #log {
     width: 100%;
@@ -117,35 +90,12 @@ svg {
     background-color: unset;
     border: none;
     color:  var(--primary);
+    width: 100%;
 }
 
 #log section {
     display: flex;
     flex-direction: column;
-}
-
-#preview-goal{
-	    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    position: relative;
-}
-
-#add-goal{
-	    display: flex;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-}
-
-#add-goal input {
-    margin-bottom: 40px;
-    border: 2px solid var(--primary);
-    border-radius: 10px;
-    padding: 10px;
-    color: var(--primary);
-    background-color: transparent;
 }
 
 input#save {
@@ -158,61 +108,26 @@ label {
     margin-bottom: 20px;
 }
 
-/*single page*/
-
-#addsub {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-}
-
-#addsub p {
-    padding: 0px 20px;
-}
-
-#addpoint, #subpoint {
-    background-color: var(--primary);
-    color: var(--secundary);
-    border-radius: 50%;
-    height: 3em;
-    width: 3em;
-    border: 1px solid var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
-
 /*Settings page*/
-#settingsIcon{
+#slider-icon {
     position: fixed;
-    right: 75%;
-    bottom: 6.3%;
-    height: 2em;
-    width: 2em;
-    opacity: 0;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    font-size: 10px;
 }
 
-#settingsIcon:before {
-    content: url(images/cog.svg);
+svg {
+    fill: var(--primary);
     width: 30px;
     height: 30px;
-    padding-top: 3px;
+    align-self: center;
 }
 
 #settings {
     display: flex;
     flex-direction: column;
     gap: 30px;
-}
-
-#show-goal button {
-    display: none;
-}
-
-#show-goal .red button {
-    display: block;
 }
 
 
@@ -222,5 +137,12 @@ label {
     gap: 10px;
 }
 
+#settings section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/*End settings page*/
 
 

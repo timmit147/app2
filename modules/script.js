@@ -1,120 +1,230 @@
-// // Variables
-// // Variable with all information
-// var list = {};
+// When list get data from localStorage
+if(localStorage.getItem("savedData") != null ){
+	getList();
+}
+
+// Make new list
+else{
+	list = {"route":"items","items": {"Double tap to add new item":{},"Click item to change":{},"Swipe left to go back":{},"Swipe item right to go in folder":{},"Click right corner to go to setting":{},"Swipe item down to delete":{}},};
+	localStorage.setItem("savedData", JSON.stringify(list));
+	addLocalStorage();
+	getList();
+}
+
+// Funtion get list
+function getList(){
+	list = JSON.parse(localStorage.getItem("savedData"));
+}
+
+// Save new list
+function addLocalStorage(){
+	localStorage.setItem("savedData", JSON.stringify(list));
+}
+
+// funtion string to properties
+Object.byString = function(o, s) {
+    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+    s = s.replace(/^\./, '');           // strip a leading dot
+    var a = s.split('.');
+    for (var i = 0, n = a.length; i < n; ++i) {
+        var k = a[i];
+        if (k in o) {
+            o = o[k];
+        } else {
+            return;
+        }
+    }
+    return o;
+}
+
+inception();
 
 
-// // Functions
-// // Add localStorage info in list variable
-// function getList(){
-// 	list = JSON.parse(localStorage.getItem("savedData"));
-// }
+function hello(x){
 
-// // Changes localStorage variable
-// function addLocalStorage(){
-// 	localStorage.setItem("savedData", JSON.stringify(list));
-// }
-
-// // activate on save page
-// if(document.getElementById("save")){
-
-// 	getList();
-// 	console.log(list);
-// 	if(list == null){
-// 		list = {};
-// 	}
-// 	document.getElementById("save").addEventListener("click", function() {
-// 		const title = document.getElementById("title").value;
-// 		list[title] = {"date" : "date" };
-// 		addLocalStorage();
-// 		window.location.href = "index.html";
-	  
-// 	});
-// }
-
-// // activate on home
-// if(document.getElementById("home")){
-// 	getList();
-// 	i = 0;
-// 	for (item in list) {
-// 	  document.getElementById('log').innerHTML += "<section id= '" + item + "'> <p>" + item + "</p> </section>"
-// 	  i++;
-// 	}
-// }
+		if ((document.getElementById(x).value == "") ||   (document.getElementById(x).value == "New item")){
+			remove(x);
+		}
+			if(document.getElementById(x).value == x){
+		console.log(document.getElementById(x).value+" exsist");
+		newItem();
+	}
+	else{
+		getList();
+			Object.byString(list, list["route"])[document.getElementById(x).value] = Object.byString(list, list["route"] )[x];
+			delete Object.byString(list, list["route"] )[x];
+			addLocalStorage();
+			newItem();
+	}
 
 
-// // remove item from listconst cbox = document.querySelectorAll("#log section");
-// const cbox = document.querySelectorAll("#log section");
+}
 
-// for (let i = 0; i < cbox.length; i++) {
-// 	cbox[i].addEventListener("click", function() {
+function newItem(){
+		Object.byString(list, list["route"] )[" "] = {} ;
+	addLocalStorage();
+	inception();
+	var input = document.getElementById(" ");
+	// input.focus();
+	input.select();
 
-// 	if(cbox[i].classList.contains("red")){
-// 		cbox[i].classList.remove("red");
-// 		document.querySelector("#slider-icon").style.display = "unset";
-// 		document.querySelector("#plus-icon").style.display = "unset";
-// 		document.querySelector("#trash-icon").style.display = "none";
-// 		document.querySelector("#pen-icon").style.display = "none";
-// 		cbox[i].style.textDecoration  = "none";
-// 	}
+}
 
-// 	else{
+if(document.querySelector("#home")){
 
+document.querySelector("#home").addEventListener('dblclick', function (e) {
+  newItem();
+});
 
-// 		for (let i = 0; i < cbox.length; i++) {
-// 			if (cbox[i].classList.contains("red")){
-// 				cbox[i].classList.remove("red");
-// 				document.querySelector("#slider-icon").style.display = "unset";
-// 				document.querySelector("#plus-icon").style.display = "unset";
-// 				document.querySelector("#trash-icon").style.display = "none";
-// 				document.querySelector("#pen-icon").style.display = "none";
-// 				cbox[i].style.textDecoration  = "none";
-// 			}
-			
-// 		}
-
-// 		cbox[i].classList.toggle("red");
-
-// 		cbox[i].style.textDecoration  = "underline";
-// 		document.querySelector("#slider-icon").style.display = "none";
-// 		document.querySelector("#plus-icon").style.display = "none";
-// 		document.querySelector("#trash-icon").style.display = "unset";
-// 		document.querySelector("#pen-icon").style.display = "unset";
-
-// 		document.getElementById("trash-icon").onclick = function() { remove(cbox[i].id) };
-
-// 		document.getElementById("pen-icon").onclick = function() { change(cbox[i].id) };
-
-// 	}
+}
 
 
-// 	});
-// }
+function inception(){
+
+	// check route to show 
+	if(document.querySelector("#home-back-icon")){
+
+	if((list["route"] == "items") || (list["route"] == "items.")){
+		document.querySelector("#home-back-icon").style.display = "none";
+	}
+	else{
+		document.querySelector("#home-back-icon").style.display = "unset";
+	}
+
+	if(list["route"] == ""){
+		list["route"] = "items";
+	}
+				}
+	if(document.getElementById("home")){
+		getList();
+			document.getElementById('log').innerHTML = "";
+		for (item in Object.byString(list, list["route"])) {
+			if(item != null){
+				document.getElementById('log').innerHTML += '<form onsubmit="return false"><input type="text" id="' + item + '" value="' + item + '"><input type="submit" value="Submit"  style="display:none;" onclick="hello(\''+item+'\')" ></form>';
+			}		
+		}
+	}
+	const box = document.querySelectorAll("#log form input");
+
+		for (let i = 0; i < box.length; i++) {
+
+			function openFile() {
+				getList();
+				list["route"] = list["route"] + "." + box[i].id;
+				console.log(list["route"] ); 
+				addLocalStorage();
+				inception();
+				console.log(box[i].id);
+			}
+
+			box[i].addEventListener('touchstart', function(e){
+			    // console.log("event start")
+			    var touchobj = e.changedTouches[0]; 
+			    startx = parseInt(touchobj.clientX); 
+			    starty = parseInt(touchobj.clientY); 
+			    // console.log("event start done", startx,starty)
+			}, false);
+
+				// show move of object
+				box[i].addEventListener('touchmove', function(e){
+				var touchobj = e.changedTouches[0]; 
+					movex = parseInt(touchobj.clientX); 
+					movey = parseInt(touchobj.clientY); 
+				  	// console.log(movex,)
+				  	if(movey - 100  > starty){
+					// console.log(movex,)
+					box[i].style.textDecoration  = "line-through";
+					}
+					else{
+						box[i].style.textDecoration  = "unset";
+					}
+
+					if(movex - 50  > startx) {
+						box[i].value = box[i].id + " > > >";
+					}
+					else{
+						box[i].value  = box[i].id;
+					}
+
+				}, false);
+
+			    box[i].addEventListener('touchend', function(e){
+			    // console.log("event start")
+			    var touchobj = e.changedTouches[0]; 
+			    endx = parseInt(touchobj.clientX); 
+			    endy = parseInt(touchobj.clientY); 
+			    // console.log("event end done", endx,endy)
+			    if(endy - 100  > starty){
+			    				    console.log(startx, endx);
+				console.log("down");
+				remove(box[i].id)
+				}
+				if(endx - 50 > startx){
+								    console.log(startx, endx);
+				console.log("hyger");
+					openFile(box[i].id);
+				}
+
+			}, false);
+
+	
+		}
+}
 
 
-// function remove(x){
-// 	getList();
-// 	delete list[x];
-// 	addLocalStorage();
-// 	location.reload();
-// }
+// Remove item
+function remove(x){
 
-// function change(x){
-// window.location.href = "edit.html?item=" + x;
-// }
+		getList();
+		delete Object.byString(list, list["route"] )[x];
+		addLocalStorage();
+		inception();
 
-// // get value from url and update list property
-// if(document.getElementById("change")){
-// 	var url_string = window.location.href; //window.location.href
-// 	var url = new URL(url_string);
-// 	var item = url.searchParams.get("item");
-// 	document.getElementById("change").value = item;
 
-// 	document.getElementById("submitChange").addEventListener("click", function() {
-// 		getList();
-// 		console.log(document.querySelector("#change").value);
-// 		delete list[item];
-// 		list[document.querySelector("#change").value] = {};
-// 		addLocalStorage();
-// 		window.location.href = "index.html";
-// 	});
-// }
+}
+
+
+// swipe left to go back
+document.addEventListener('touchstart', function(e){
+	// console.log("event start")
+	var touchobj = e.changedTouches[0]; 
+	startx = parseInt(touchobj.clientX); 
+	starty = parseInt(touchobj.clientY); 
+	// console.log("event start done", startx,starty)
+}, false);
+
+document.addEventListener('touchend', function(e){
+	// console.log("event start")
+	var touchobj = e.changedTouches[0]; 
+	endx = parseInt(touchobj.clientX); 
+	endy = parseInt(touchobj.clientY); 
+	// console.log("event end done", endx,endy)
+	if(endx + 100 < startx){
+
+		if(document.querySelector("#settings")){
+			window.location.href = "index.html";
+		}
+
+		if(document.querySelector("#home")){
+			if(list["route"] != "items"){
+				var str = list["route"];
+				var lastIndex = str.lastIndexOf(".");
+				str = str.substring(0, lastIndex);
+				list["route"] = str;
+				addLocalStorage();
+				inception();
+			}
+
+		}
+
+
+
+	}
+
+
+}, false);
+
+
+
+
+

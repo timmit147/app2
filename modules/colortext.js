@@ -10,7 +10,7 @@ if(getValue == null){
 if(document.getElementById("settings")){
 var e = document.createElement('section');
 e.setAttribute("id", "colorText");
-e.innerHTML = ('<form id="formColorText"> Text color: <input type="color" name="fname" value="'+ getValue +'"><input type="submit" value="submit"></form>');
+e.innerHTML = ('<form id="formColorText"> Text color: <input type="color" name="fname" value="'+ getValue +'"><input class="button" type="submit" value="Change"></form>');
 document.getElementById("settings").appendChild(e);
 }
 

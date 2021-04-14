@@ -2,16 +2,17 @@ if(localStorage.getItem("img")){
 var backgroundImage = localStorage.getItem("img");
 
 document.body.style.backgroundImage = "url('"+ localStorage.img +"')";
-document.body.style.backgroundSize = "cover";
-document.body.style.height = "100vh";
-document.body.style.overflow = "hidden";
 }
+else{
+   document.body.style.backgroundImage = "url('background.jpg')";
+}
+
 
 // toevoegen in html #settings
 if(document.getElementById("settings")){
 var e = document.createElement('section');
 e.setAttribute("id", "backgroundImage");
-e.innerHTML = ('<input type="file" id="files" name="files[]" multiple />');
+e.innerHTML = (' Background image: <input  type="file" id="files"  name="files[]" multiple />');
 document.getElementById("settings").appendChild(e);
 }
 
