@@ -2,13 +2,14 @@
 :root {
   --primary: white;
   --secundary: black;
+  --fontSize: 14px;
 }
 
 
 body {
     height: 100vh;
     font-family: roboto;
-    font-size: 18px;
+    font-size: var(--fontSize);
     background-color: var(--secundary);
     padding: 2em;
     margin: 0px;
@@ -18,6 +19,14 @@ body {
     box-sizing: border-box;
         background-position: center;
             background-size: cover;
+}
+
+p {
+    margin: 0px;
+}
+
+input {
+    font-size: var(--fontSize);
 }
 
 /*hide scrollbar*/

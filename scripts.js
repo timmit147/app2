@@ -1,4 +1,4 @@
-var files = ['backgroundImage', 'colortext', 'script', 'hideQuestion']; 
+var files = ['backgroundImage', 'colortext', 'script', 'hideQuestion', 'fontSize']; 
 
 function loadScripts(){
    const directory = 'modules/';
