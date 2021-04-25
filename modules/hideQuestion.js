@@ -30,11 +30,13 @@ if(document.getElementById("hideSettingsIcon")){
 		if (checkBox.checked){
 		localStorage.setItem("hideSettingsIcon", false);
 		getValue = localStorage.getItem("hideSettingsIcon");
+		location.reload();
 		// console.log(getValue);
 		// text.style.opacity = "0";
 		} else {
 		localStorage.setItem("hideSettingsIcon", true);
 		getValue = localStorage.getItem("hideSettingsIcon");
+		location.reload();
 		// console.log(getValue);
 		// text.style.opacity = "1";
 		}

@@ -35,12 +35,12 @@ function handleFileSelect(evt) {
         return function(e) {
           // Render thumbnail.
           localStorage.setItem('img', e.target.result);
-          location.reload();
         };
       })(f);
 
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
+                location.reload();
     }
   }
 

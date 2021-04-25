@@ -45,7 +45,7 @@ function remove(x){
 // First time
 function firtTime(){
 	if(localStorage.getItem("savedData") == null ){
-		list = {"route":"items","items": {"Double tap to add new item":{},"Click item to change":{},"Swipe left to go back":{},"Swipe item right to go in folder":{},"Click right corner to go to setting":{},"Swipe item down to delete":{}},};
+		list = {"route":"items","items": {"Double tap to add new item":{},"Click item to open folder":{},"Swipe left to go folder back":{},"Click right corner to go to setting":{},"Long press item to change name":{},"Drag item left remove item":{},"Drag item up to change order":{}},};
 		localStorage.setItem("savedData", JSON.stringify(list));
 		addLocalStorage();
 		getList();
@@ -60,10 +60,32 @@ function firtTime(){
 // troep opruimen
 
 
+// // funtion string to properties
+// Object.byString = function(o, s) {
+//     s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+//     s = s.replace(/^\./, '');           // strip a leading dot
+//     var a = s.split('.');
+//     for (var i = 0, n = a.length; i < n; ++i) {
+//         var k = a[i];
+//         if (k in o) {
+//             o = o[k];
+//         } else {
+//             return;
+//         }
+//     }
+//     return o;
+// }
+
+
+
+
 // funtion string to properties
 Object.byString = function(o, s) {
-    s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+	
+	s = s.replace(/\[(\w+)\]/g, '$1'); // convert indexes to properties
+    // s = s.replace(/\[(\w+)\]/g, '$1'); // convert indexes to properties
     s = s.replace(/^\./, '');           // strip a leading dot
+
     var a = s.split('.');
     for (var i = 0, n = a.length; i < n; ++i) {
         var k = a[i];
@@ -74,6 +96,7 @@ Object.byString = function(o, s) {
         }
     }
     return o;
+    
 }
 
 
@@ -84,28 +107,32 @@ var addToObject = function (key, index) {
 	var i = 0;
 
 	// Loop through the original object
-	for (var prop in list[list["route"]]) {
+	for (var prop in Object.byString(list, list["route"])) {
 
 		if(i == index){
-			temp[key] = list[list["route"]][key];
+			temp[key] = Object.byString(list, list["route"])[key];
 		}
 
 		if(prop != key){
-			temp[prop] = list[list["route"]][prop];
+			temp[prop] = Object.byString(list, list["route"])[prop];
 		}
 
 		i++;
 
 	}
 
-	list[list["route"]] = temp;
+	// list[list["route"]] = temp;
+	Object.byString(list, list["route"]) = temp;
 	addLocalStorage();
 
 };
 
+// console.log(Object.byString(list, list["route"]));
+
+// 	console.log(list[list["route"]]);
 
 // console.log(list[list["route"]]);
-// addToObject('Click item to change',  1);
+// addToObject('Click item to change',  0);
 // console.log(list[list["route"]]);
 
 
@@ -174,13 +201,13 @@ function inception(){
 			document.getElementById('log').innerHTML = "";
 		for (item in Object.byString(list, list["route"] )) {
 			if(item != null){
-				document.getElementById('log').innerHTML += '<form id="' + item + '" name="myForm" onsubmit="return false"><input onfocusout="save(\''+item+'\')" onclick="openFile(this)"   type="text"  value="' + item + '"><input type="submit" value="Submit"  style="display:none;" onclick="reloadItem(\''+item+'\')" ></form>';
+				document.getElementById('log').innerHTML += '<form name="myForm" onsubmit="return false"><input onfocusout="save(\''+item+'\')" onclick="openFile(this)"   type="text" id="' + item + '" value="' + item + '"><input type="submit" value="Submit"  style="display:none;" onclick="reloadItem(\''+item+'\')" ></form>';
 
 			}	
 				
 		}
 	}
-	const box = document.querySelectorAll("#log form");
+	const box = document.querySelectorAll("#log form input");
 
 	for (let i = 0; i < box.length; i++) {
 
@@ -203,24 +230,14 @@ function inception(){
 			box[i].style.position = "fixed";
 
 
-// for (let step = 0; step < i - 2; step++) {
-//   // Runs 5 times, with values of step 0 through 4.
-//   console.log('Walking east one step');
-//   if(amount > 40){
-//   	i ++;
-//   }
-// }
-			const location = i - 1;
-			if (movey < starty - 30){
-				document.getElementById(box[location].id).style.paddingTop = "30px";
-				addToObject(box[i].id,  i - 1 );
+			if(box[i - 2]){
+				if (movey < starty - 30){
+					document.getElementById(box[i - 2].id).style.paddingTop = "30px";
+				}
+				else{
+					document.getElementById(box[i - 2].id).style.paddingTop = "unset";
+				}
 			}
-			else{
-				document.getElementById(box[location].id).style.paddingTop = "unset";
-			}
-
-
-
 
 			if(movex > window.innerWidth - 50){
 				console.log("hallo");
@@ -236,13 +253,11 @@ function inception(){
 		box[i].addEventListener('touchend', function(e){
 			touchobj = e.changedTouches[0]; 
 			movex = parseInt(touchobj.clientX); 
-			movey = parseInt(touchobj.clientY);
 			box[i].style.position = "";
-
 			if (movey < starty - 30){
+				addToObject(box[i].id,  (i/2) -1);
 				inception();
 			}
-
 			if(movex > window.innerWidth - 50){
 				remove(box[i].id)
 				document.querySelector('body').style.boxShadow = "unset";
